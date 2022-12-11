@@ -13,7 +13,7 @@
     
     
       
-        <title>12月 - 2022年度課題研究P4</title>
+        <title>logDec ura - 2022年度課題研究P4</title>
       
     
     
@@ -59,7 +59,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#12" class="md-skip">
+        <a href="#_1" class="md-skip">
           Skip to content
         </a>
       
@@ -92,7 +92,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              12月
+              logDec ura
             
           </span>
         </div>
@@ -272,28 +272,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#129" class="md-nav__link">
-    12/9
+  <a href="#daq-pc" class="md-nav__link">
+    DAQ PCの設定
   </a>
-  
-    <nav class="md-nav" aria-label="12/9">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#nfs" class="md-nav__link">
-    NFSについて
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#1211-ngamma-psd" class="md-nav__link">
-    12/11 n/gamma PSDの準備
+  <a href="#nucespri100" class="md-nav__link">
+    NUC(espri100)側の設定
   </a>
   
 </li>
@@ -312,25 +299,25 @@
                 
 
 
-<h1 id="12">12月</h1>
-<h2 id="129">12/9</h2>
-<p>ページの更新方法を思い出した。
-参考にしたのは - <a href="https://aiedoc.github.io/note/Tips/Mkdocs/mkdocs%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9FGitHubPages/">このページ</a></p>
-<p>日曜に液体シンンチレータの準備をするので、あらかじめPCの準備</p>
-<h3 id="nfs">NFSについて</h3>
-<p>P4でデータの収集をするが、espriの方で解析したいので、同期させるシステム。</p>
-<h2 id="1211-ngamma-psd">12/11 n/gamma PSDの準備</h2>
-<p>12時より開始。波形全てと落ちる部分の2つのデータを取得する。今回はCo60でのみ測定。
-ぺデスタルはいずれもch60に来たので</p>
-<pre><code class="language-c">tree-&gt;Draw((qdcraw[2]-60)/(qdcraw[1]-60)&gt;&gt;hadc0(100,0,1))
-tree-&gt;Draw((qdcraw[2]-60):(qdcraw[1]-60)&gt;&gt;hadc0(1000,0,1000,100,0,1000))
+<h1 id="_1">情報</h1>
+<p>一応隠しました</p>
+<h4 id="daq-pc">DAQ PCの設定</h4>
+<p><code>nfs</code>に必要なパッケージは揃っている。またserviceの有効化もされている。設定ファイルの編集が必要。</p>
+<p><code>/etc/exports</code>を編集する。</p>
+<pre><code>#/homep4/p42021/anap4_root/root 192.168.11.024()rw
+/homep4/p42022/anap4_root/root 192.168.11.024()rw
 </code></pre>
-<p>でいけた。</p>
-<ul>
-<li>結果
-<img alt="kekka1" src="../DecPhoto/n_gamma_1211_1.png" />
-<img alt="kekka2" src="../DecPhoto/n_gamma_1211_2.png" /></li>
-</ul>
+<h4 id="nucespri100">NUC(espri100)側の設定</h4>
+<p><code>/mnt/p4root</code>にマウントする。</p>
+<pre><code>$ sudo mkdir /mnt/p4root_2022
+</code></pre>
+<p>これで入れたいディレクトリを決定する。マウントの確認をする。</p>
+<pre><code>$ sudo mount -t nfs 192.168.11.9:/home/p4/p42022/anap4_root/mnt/p4root_2022
+</code></pre>
+<p>設定で、</p>
+<pre><code># NFS
+192.168.11.9:/home/p4/p42022/anap4_root/root    /mnt/p4root nfs defaults    0 0
+</code></pre>
 
               
             </article>
