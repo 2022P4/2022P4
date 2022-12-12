@@ -322,8 +322,8 @@
 <h2 id="1211-ngamma-psd">12/11 n/gamma PSDの準備</h2>
 <p>12時より開始。波形全てと落ちる部分の2つのデータを取得する。今回はCo60でのみ測定。
 ぺデスタルはいずれもch60に来たので</p>
-<pre><code class="language-c">tree-&gt;Draw((qdcraw[2]-60)/(qdcraw[1]-60)&gt;&gt;hadc0(100,0,1))
-tree-&gt;Draw((qdcraw[2]-60):(qdcraw[1]-60)&gt;&gt;hadc0(1000,0,1000,100,0,1000))
+<pre><code class="language-c">tree-&gt;Draw(&quot;(qdcraw[2]-60)/(qdcraw[1]-60)&gt;&gt;hadc0(100,0,1)&quot;)
+tree-&gt;Draw(&quot;(qdcraw[2]-60):(qdcraw[1]-60)&gt;&gt;hadc0(1000,0,1000,100,0,1000)&quot;)
 </code></pre>
 <p>でいけた。</p>
 <ul>
